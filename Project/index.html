@@ -1,72 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Simple Login</title>
-<style>
-  :root { --bg:#0f1724; --card:#102233; --accent:#59a6ff; --muted:#9fb3c8; color-scheme: dark; }
-  body{margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#071021 0%, #042033 100%); font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;}
-  .card{width:340px; padding:28px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow: 0 8px 30px rgba(2,6,23,0.6); color:white;}
-  h1{margin:0 0 14px; font-size:20px; letter-spacing:0.2px}
-  label{font-size:13px; color:var(--muted); display:block; margin-bottom:6px;}
-  input[type="text"], input[type="password"]{width:100%; padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:#fff; outline:none; margin-bottom:12px;}
-  button{width:100%; padding:10px; border-radius:10px; border:0; cursor:pointer; font-weight:600; background:linear-gradient(90deg,var(--accent), #3ea0ff); color:#022033;}
-  .note{font-size:12px; color:var(--muted); margin-top:10px; text-align:center;}
-  .msg{margin-top:10px; font-size:13px;}
-</style>
+  <meta charset="utf-8">
+  <title>Login</title>
 </head>
 <body>
-  <main class="card" role="main">
-    <h1>Sign in</h1>
-
-    <!-- Form posts to Apache CGI script -->
-    <form id="loginForm" action="/cgi-bin/login.py" method="post" accept-charset="utf-8">
-      <div>
-        <label for="username">Username</label>
-        <input id="username" name="username" type="text" required autocomplete="username" />
-      </div>
-
-      <div>
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" required autocomplete="current-password" />
-      </div>
-
-      <button type="submit">Sign in</button>
-    </form>
-
-    <div class="note">This is a demo login page. Submissions are logged server-side for demonstration.</div>
-    <div id="msg" class="msg" aria-live="polite"></div>
-  </main>
-
-<script>
-  // Optional: intercept submission to show nice client feedback then allow POST.
-  const form = document.getElementById('loginForm');
-  const msg = document.getElementById('msg');
-
-  form.addEventListener('submit', (e) => {
-    // show immediate feedback; actual POST will still happen
-    msg.textContent = 'Sending...';
-    // allow normal submission to the CGI to do server-side logging & response
-  });
-
-  // If you want to use Fetch instead of plain POST and display server response:
-  // (commented out because CGI returns HTML which will navigate if form is used)
-  /*
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const body = new URLSearchParams(new FormData(form));
-    msg.textContent = 'Sending...';
-    try {
-      const res = await fetch('/cgi-bin/login.py', { method: 'POST', body });
-      const text = await res.text();
-      msg.innerHTML = 'Server response received — open browser response.';
-      // optionally display parsed text...
-    } catch (err) {
-      msg.textContent = 'Network error: ' + err;
-    }
-  });
-  */
-</script>
+  <h1>Login Page</h1>
+  <form action="/cgi-bin/login.py" method="post">
+    <label>Username: <input type="text" name="username"></label><br>
+    <label>Password: <input type="password" name="password"></label><br>
+    <button type="submit">Login</button>
+  </form>
 </body>
 </html>

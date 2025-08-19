@@ -24,7 +24,7 @@
       e.preventDefault();
 
       const formData = new FormData(form);
-      await fetch('/cgi-bin/submit.sh', {
+      await fetch('/submit', {
         method: 'POST',
         body: new URLSearchParams(formData)
       });

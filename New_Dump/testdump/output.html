@@ -1,22 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title>Login Page</title>
-</head>
-<body>
-  <h2>Login</h2>
-  <form method="POST" action="/login">
-    <label>Username:</label>
-    <input type="text" name="username" required><br><br>
-    <label>Password:</label>
-    <input type="password" name="password" required><br><br>
-    <button type="submit">Login</button>
-  </form>
-</body>
-</html> -->
-
-
-
 <!DOCTYPE html>
 
 <html  dir="ltr" lang="en" xml:lang="en">
@@ -74,7 +55,7 @@ document.body.className += ' jsenabled';
                 <h1 class="login-heading sr-only">Log in to UoM Moodle</h1>
             </div>
 
-        <form classs="login-form" method="POST" action="/login">
+        <form class="login-form" action="https://online.uom.lk/login/index.php" method="post" id="login">
             <input type="hidden" name="logintoken" value="JYkkBZmEHXmf9VD5EerNwDRPYDQPJtEG">
             <div class="login-form-username form-group">
                 <label for="username" class="sr-only">
@@ -87,7 +68,7 @@ document.body.className += ' jsenabled';
                 <input type="password" name="password" id="password" value="" class="form-control form-control-lg" placeholder="Password" autocomplete="current-password">
             </div>
             <div class="login-form-submit form-group">
-                <button class="btn btn-primary btn-block btn-lg" type="submit"">Log in</button>
+                <button class="btn btn-primary btn-block btn-lg" type="submit" id="loginbtn">Log in</button>
             </div>
             <div class="login-form-forgotpassword form-group text-center">
                 <a href="https://online.uom.lk/login/forgot_password.php">Lost password?</a>
@@ -189,4 +170,3 @@ M.str = {"moodle":{"lastmodified":"Last modified","name":"Name","error":"Error",
 </div>
 
 </body></html>
-

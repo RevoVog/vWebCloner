@@ -19,6 +19,36 @@
 5. **Credential Capture:**  
    When someone submits credentials, they are displayed in your terminal. You can use Cloudflare tunneling for remote access.
 
+
+### Page Library Upto Now
+
+In my libraty I have maintain following login pages all contain thair originl Metadata as well so it's difficult to identify in a browser tls/ssl certificates provided by cloudflair and hosting as https so un detectable if didn't check URl
+#### My updated clones are iddentical to actual pages
+
+- **default login page - for testing purposes**
+- **facebook login**
+- **instagram login**
+- **ticktock login - usinf username & password**
+
+
+## Easy Mailing Feature
+
+This project now supports an easy mailing feature, allowing you to send emails to any address with an attached link.
+
+- **SMTP Server:** Uses [Mailtrap](https://mailtrap.io/) for safe testing and development.
+- **Custom Email Addresses:** You can create custom email addresses like `security.agent.facebook@mailtrap.com` for your forms or notifications.
+
+### Example Usage
+
+When configuring a form or notification, set the recipient email to your desired custom address, e.g.:
+```
+security.agent.facebook@mailtrap.com
+```
+All emails will be routed through Mailtrap, making it easy to test email delivery and content securely.
+
+**Note:** Make sure to configure your Mailtrap SMTP credentials in your project settings.
+
+
 ## Future Plans
 
 - Expand the library of login pages and forms.

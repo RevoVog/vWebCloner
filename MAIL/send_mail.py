@@ -8,19 +8,18 @@ from dotenv import load_dotenv
 # Load environment variables from .env
 load_dotenv()
 
-# Validate args
 if len(sys.argv) < 2:
     print(f"Usage: {sys.argv[0]} recipient@example.com")
     sys.exit(1)
 
 recipient = sys.argv[1]
 
-# Config from .env
+# Read SMTP config from .env
 SMTP_SERVER = os.getenv("SMTP_SERVER")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
-SMTP_USER = os.getenv("SMTP_USER")
-SMTP_PASS = os.getenv("SMTP_PASS")
-MAIL_FROM  = os.getenv("MAIL_FROM", SMTP_USER)
+SMTP_PORT   = int(os.getenv("SMTP_PORT", "587"))
+SMTP_USER   = os.getenv("SMTP_USER")
+SMTP_PASS   = os.getenv("SMTP_PASS")
+MAIL_FROM   = os.getenv("MAIL_FROM", SMTP_USER)
 
 if not (SMTP_SERVER and SMTP_USER and SMTP_PASS):
     print("Missing SMTP_SERVER, SMTP_USER or SMTP_PASS in .env")
@@ -40,13 +39,13 @@ msg["To"] = recipient
 msg["Subject"] = subject
 msg.set_content(body)
 
-# Send mail
+# Send
 try:
     with smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=30) as server:
         server.starttls()
         server.login(SMTP_USER, SMTP_PASS)
         server.send_message(msg)
-    print(f"Mail sent to {recipient}")
+    print(f"✅ Mail sent to {recipient}")
 except Exception as e:
-    print("Failed to send mail:", e)
+    print(f"❌ Failed to send mail: {e}")
     sys.exit(3)
